@@ -1,6 +1,5 @@
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 import 'tailwindcss/tailwind.css';
 
@@ -8,7 +7,6 @@ function UserDetail() {
     const { id } = useParams();
     const [user, setUser] = useState([]);
     const [hasFetchedUsers, setHasFetchedUsers] = useState(false);
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (!hasFetchedUsers) {
