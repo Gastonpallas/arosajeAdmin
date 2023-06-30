@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate  } from "react-router-dom"
+import { useNavigate  } from "react-router-dom";
 function Admin() {
     const [users, setUsers] = useState([]);
     const [hasFetchedUsers, setHasFetchedUsers] = useState(false);
