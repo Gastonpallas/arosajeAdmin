@@ -12,7 +12,7 @@ function UserDetail() {
         if (!hasFetchedUsers) {
             const fetchUsers = async () => {
                 try {
-                    const response = await fetch(`http://localhost:8888/User/id`, {
+                    const response = await fetch(`http://localhost:8888/User/${id}`, {
                         headers: {
                             Authorization: `Bearer ${sessionStorage.getItem('token')}`,
                         },
