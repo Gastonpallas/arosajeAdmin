@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate  } from "react-router-dom";
+import {API_USER} from "../Constantes/API";
 function Admin() {
     const [users, setUsers] = useState([]);
     const [hasFetchedUsers, setHasFetchedUsers] = useState(false);
@@ -9,12 +10,14 @@ function Admin() {
         if (!hasFetchedUsers) {
             const fetchUsers = async () => {
                 try {
-                    const response = await fetch('http://localhost:8888/User', {
+                    const response = await fetch(API_USER.ALL_USERS, {
                         headers: {
                             Authorization: `Bearer ${sessionStorage.getItem('token')}`
                         }
                     });
+
                     const data = await response.json();
+                    console.log(data)
                     setUsers(data);
                     setHasFetchedUsers(true);
                 } catch (error) {
@@ -28,7 +31,7 @@ function Admin() {
 
     const handleIsBotanisteClick = async (user) => {
         try {
-            const response = await fetch(`http://localhost:8888/User`, {
+            const response = await fetch(API_USER.USER_LOGIN, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

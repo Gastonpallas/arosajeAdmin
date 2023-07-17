@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate  } from "react-router-dom"
 
+import {API_USER } from "../Constantes/API";
+
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -26,7 +28,7 @@ function Login() {
             password: password
         };
 
-        fetch('http://localhost:8888/User/login/admin', {
+        fetch( API_USER.ADMIN_LOGIN, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

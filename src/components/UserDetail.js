@@ -2,6 +2,7 @@ import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { NotificationManager } from 'react-notifications';
 import 'tailwindcss/tailwind.css';
+import {API_URL_USER, API_USER} from "../Constantes/API";
 
 function UserDetail() {
     const { id } = useParams();
@@ -12,7 +13,7 @@ function UserDetail() {
         if (!hasFetchedUsers) {
             const fetchUsers = async () => {
                 try {
-                    const response = await fetch(`http://localhost:8888/User/${id}`, {
+                    const response = await fetch( API_URL_USER + id, {
                         headers: {
                             Authorization: `Bearer ${sessionStorage.getItem('token')}`,
                         },
@@ -33,7 +34,7 @@ function UserDetail() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch(`http://localhost:8888/User/admin`, {
+            const response = await fetch(API_USER.CHANGE_INFOS, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
